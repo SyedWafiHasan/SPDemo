@@ -14,5 +14,23 @@
             android:key="colour"
             android:summary="Choose colour on startup">
         </EditTextPreference>
+        <SwitchPreference
+            android:title="Large Text"
+            android:summary="Make text larger?"
+            android:key="large"
+            android:defaultValue="false">
+        </SwitchPreference>
+        <SwitchPreference
+            android:title="Transparent Background"
+            android:summary="Enable transparent background?"
+            android:defaultValue="false"
+            android:key="transparent">
+        </SwitchPreference>
+        <SwitchPreference
+            android:title="Dark Theme"
+            android:summary="Enable dark theme?"
+            android:defaultValue="false"
+            android:key="dark">
+        </SwitchPreference>
     </PreferenceCategory>
 </PreferenceScreen>

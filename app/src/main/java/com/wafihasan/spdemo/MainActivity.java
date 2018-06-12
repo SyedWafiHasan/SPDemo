@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity
     TextView sampleText;
     Snackbar snackbar;
     RelativeLayout relativeLayout;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,7 +36,21 @@ public class MainActivity extends AppCompatActivity
     protected void onStart()
     {
         super.onStart();
-        relativeLayout = findViewById(R.id.relativeLayout);
+        boolean largeText = sharedPreferences.getBoolean("large", false);
+        if(largeText)
+        {
+            sampleText.setTextSize(35);
+        }
+        else if(!largeText)
+        {
+            sampleText.setTextSize(25);
+        }
+        boolean darkTheme = sharedPreferences.getBoolean("dark", false);
+        boolean transparent = sharedPreferences.getBoolean("transparent", false);
+        if(darkTheme && transparent)
+        {
+            setTheme(android.R.style.Theme_Holo_Wallpaper);
+        }
         String s = sharedPreferences.getString("colour", "#000000");
         try
         {
@@ -50,9 +66,5 @@ public class MainActivity extends AppCompatActivity
     public void startSettings(View view)
     {
         startActivity(new Intent(MainActivity.this, PreferenceActivity.class));
-    }
-    public void setColor(String s)
-    {
-        sampleText.setTextColor(Color.parseColor(s));
     }
 }
