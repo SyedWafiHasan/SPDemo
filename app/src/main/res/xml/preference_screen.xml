@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Random Shit Settings">
+        <CheckBoxPreference
+            android:title="Laziness Check"
+            android:summary="Are you lazy to the core?"
+            android:defaultValue="true"
+            android:key="lazy">
+        </CheckBoxPreference>
+        <EditTextPreference
+            android:title="Colour of app"
+            android:defaultValue="#000000"
+            android:key="colour"
+            android:summary="Choose colour on startup">
+        </EditTextPreference>
+    </PreferenceCategory>
+</PreferenceScreen>
