@@ -9,7 +9,7 @@
             android:key="lazy">
         </CheckBoxPreference>
         <EditTextPreference
-            android:title="Colour of app"
+            android:title="Colour of text"
             android:defaultValue="#000000"
             android:key="colour"
             android:summary="Choose colour on startup">
