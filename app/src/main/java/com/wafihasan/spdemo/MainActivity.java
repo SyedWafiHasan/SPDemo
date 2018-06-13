@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -26,9 +26,11 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        relativeLayout = findViewById(R.id.relativeLayout);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        relativeLayout = findViewById(R.id.relativeLayout);
         boolean b = sharedPreferences.getBoolean("lazy", true);
+        String s = (b?"Congratulations on being super lazy":"Chill out a bit hooman");
+        Toast.makeText(this, s, Toast.LENGTH_LONG ).show();
         sampleText = findViewById(R.id.textView);
     }
 
@@ -41,15 +43,9 @@ public class MainActivity extends AppCompatActivity
         {
             sampleText.setTextSize(35);
         }
-        else if(!largeText)
+        if(!largeText)
         {
             sampleText.setTextSize(25);
-        }
-        boolean darkTheme = sharedPreferences.getBoolean("dark", false);
-        boolean transparent = sharedPreferences.getBoolean("transparent", false);
-        if(darkTheme && transparent)
-        {
-            setTheme(android.R.style.Theme_Holo_Wallpaper);
         }
         String s = sharedPreferences.getString("colour", "#000000");
         try
@@ -62,7 +58,6 @@ public class MainActivity extends AppCompatActivity
             snackbar.make(relativeLayout, "Invalid Colour Hex Code", Snackbar.LENGTH_LONG).show();
         }
     }
-
     public void startSettings(View view)
     {
         startActivity(new Intent(MainActivity.this, PreferenceActivity.class));
